@@ -6,7 +6,7 @@ build_settings:
 setup:
     composer:
         action: "install"
-        prefer_dist: false
+        prefer_dist: true
     shell:
         - "%BUILD_PATH%/app/console doctrine:schema:drop --force"
         - "%BUILD_PATH%/app/console doctrine:schema:create"
