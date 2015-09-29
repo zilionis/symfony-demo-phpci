@@ -47,7 +47,7 @@ class BlogControllerTest extends WebTestCase
     public function testAdministratorUsersCanAccessToTheBackend()
     {
         $client = static::createClient(array(), array(
-            'PHP_AUTH_USER' => 'anna_admin',
+                'PHP_AUTH_USER' => 'anna_admin',
             'PHP_AUTH_PW'   => 'kitten',
         ));
 
