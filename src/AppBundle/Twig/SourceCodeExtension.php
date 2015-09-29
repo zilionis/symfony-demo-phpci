@@ -105,7 +105,9 @@ class SourceCodeExtension extends \Twig_Extension
         });
 
         if (count($indentedLines) === count($codeLines)) {
-            $formattedCode = array_map(function ($lineOfCode) { return substr($lineOfCode, 4); }, $codeLines);
+            $formattedCode = array_map(function ($lineOfCode) {
+                return substr($lineOfCode, 4);
+            }, $codeLines);
             $formattedCode = implode("\n", $formattedCode);
         } else {
             $formattedCode = $code;
