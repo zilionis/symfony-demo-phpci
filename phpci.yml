@@ -16,7 +16,7 @@ setup:
 test:
     php_unit:
         config:
-           - "app/phpunit.xml.dist"
+           - "phpunit.xml"
     php_code_sniffer:
         path: "src"
         standard: "PSR1,PSR2"
