@@ -26,6 +26,9 @@ use AppBundle\Utils\Markdown;
  */
 class AppExtension extends \Twig_Extension
 {
+    /**
+     * @var Markdown
+     */
     private $parser;
 
     /**
@@ -44,11 +47,17 @@ class AppExtension extends \Twig_Extension
         $this->parser = $parser;
     }
 
+    /**
+     * @param Markdown $parser
+     */
     public function __construct(Markdown $parser)
     {
         $this->parser = $parser;
     }
 
+    /**
+     * @return array
+     */
     public function getFilters()
     {
         return array(
@@ -56,6 +65,10 @@ class AppExtension extends \Twig_Extension
         );
     }
 
+    /**
+     * @param $content
+     * @return string
+     */
     public function markdownToHtml($content)
     {
         return $this->parser->toHtml($content);
@@ -63,6 +76,9 @@ class AppExtension extends \Twig_Extension
 
     // the name of the Twig extension must be unique in the application. Consider
     // using 'app.extension' if you only have one Twig extension in your application.
+    /**
+     * @return string
+     */
     public function getName()
     {
         return 'app.extension';
