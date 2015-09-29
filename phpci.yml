@@ -6,10 +6,10 @@ build_settings:
 setup:
     composer:
         action: "install"
-#    shell:
-#        - "%BUILD_PATH%/app/console doctrine:schema:drop --force"
-#        - "%BUILD_PATH%/app/console doctrine:schema:create"
-#        - "%BUILD_PATH%/app/console doctrine:fixtures:load -n"
+    shell:
+        - "%BUILD_PATH%/app/console doctrine:schema:drop --force"
+        - "%BUILD_PATH%/app/console doctrine:schema:create"
+        - "%BUILD_PATH%/app/console doctrine:fixtures:load -n"
 
 
 
@@ -31,8 +31,8 @@ php_mess_detector:
         - "naming"
     allow_failures: true
 
-#complete:
-#   shell:
-#        - "%BUILD_PATH%/app/console doctrine:schema:drop --force"
-#        - "%BUILD_PATH%/app/console doctrine:schema:create"
-#        - "%BUILD_PATH%/app/console doctrine:fixtures:load -n"
+complete:
+   shell:
+        - "%BUILD_PATH%/app/console doctrine:schema:drop --force"
+        - "%BUILD_PATH%/app/console doctrine:schema:create"
+        - "%BUILD_PATH%/app/console doctrine:fixtures:load -n"
