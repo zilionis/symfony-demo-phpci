@@ -33,7 +33,7 @@ test:
     php_loc:
         directory: "src"
     php_mess_detector:
-        directory: "src"
+        path: "src"
         rules:
           - "cleancode"
           - "controversial"
