@@ -39,7 +39,7 @@ test:
           - "design"
           - "naming"
           - "unusedcode"
-#          - "somedir/customruleset.xml"
+##          - "somedir/customruleset.xml"
         allow_failures: true
         zero_config: true # do not make build as failed if something was detected
 
