@@ -35,12 +35,18 @@ class LoadFixtures implements FixtureInterface, ContainerAwareInterface
     /** @var ContainerInterface */
     private $container;
 
+    /**
+     * @param ObjectManager $manager
+     */
     public function load(ObjectManager $manager)
     {
         $this->loadUsers($manager);
         $this->loadPosts($manager);
     }
 
+    /**
+     * @param ObjectManager $manager
+     */
     private function loadUsers(ObjectManager $manager)
     {
         $passwordEncoder = $this->container->get('security.password_encoder');
@@ -63,6 +69,9 @@ class LoadFixtures implements FixtureInterface, ContainerAwareInterface
         $manager->flush();
     }
 
+    /**
+     * @param ObjectManager $manager
+     */
     private function loadPosts(ObjectManager $manager)
     {
         foreach (range(1, 10) as $i) {
@@ -93,11 +102,17 @@ class LoadFixtures implements FixtureInterface, ContainerAwareInterface
         $manager->flush();
     }
 
+    /**
+     * @param ContainerInterface|null $container
+     */
     public function setContainer(ContainerInterface $container = null)
     {
         $this->container = $container;
     }
 
+    /**
+     * @return string
+     */
     private function getPostContent()
     {
         return <<<MARKDOWN
@@ -138,6 +153,9 @@ tincidunt, faucibus nisl in, aliquet libero.
 MARKDOWN;
     }
 
+    /**
+     * @return array
+     */
     private function getPhrases()
     {
         return array(
@@ -159,6 +177,9 @@ MARKDOWN;
         );
     }
 
+    /**
+     * @return mixed
+     */
     private function getRandomPostTitle()
     {
         $titles = $this->getPhrases();
@@ -166,6 +187,9 @@ MARKDOWN;
         return $titles[array_rand($titles)];
     }
 
+    /**
+     * @return string
+     */
     private function getRandomPostSummary()
     {
         $phrases = $this->getPhrases();
@@ -176,6 +200,9 @@ MARKDOWN;
         return implode(' ', array_slice($phrases, 0, $numPhrases-1));
     }
 
+    /**
+     * @return string
+     */
     private function getRandomCommentContent()
     {
         $phrases = $this->getPhrases();

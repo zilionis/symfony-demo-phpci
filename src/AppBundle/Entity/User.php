@@ -46,33 +46,57 @@ class User implements UserInterface
      */
     private $roles = array();
 
+    /**
+     * @return mixed
+     */
     public function getId()
     {
         return $this->id;
     }
 
+    /**
+     * @return mixed
+     */
     public function getUsername()
     {
         return $this->username;
     }
+
+    /**
+     * @param $username
+     */
     public function setUsername($username)
     {
         $this->username = $username;
     }
 
+    /**
+     * @return mixed
+     */
     public function getEmail()
     {
         return $this->email;
     }
+
+    /**
+     * @param $email
+     */
     public function setEmail($email)
     {
         $this->email = $email;
     }
 
+    /**
+     * @return mixed
+     */
     public function getPassword()
     {
         return $this->password;
     }
+
+    /**
+     * @param $password
+     */
     public function setPassword($password)
     {
         $this->password = $password;
@@ -93,6 +117,9 @@ class User implements UserInterface
         return array_unique($roles);
     }
 
+    /**
+     * @param $roles
+     */
     public function setRoles($roles)
     {
         $this->roles = $roles;

@@ -18,8 +18,16 @@ namespace AppBundle\Utils;
  * @author Ryan Weaver <weaverryan@gmail.com>
  * @author Javier Eguiluz <javier.eguiluz@gmail.com>
  */
+/**
+ * Class Slugger
+ * @package AppBundle\Utils
+ */
 class Slugger
 {
+    /**
+     * @param $string
+     * @return string
+     */
     public function slugify($string)
     {
         return trim(preg_replace('/[^a-z0-9]+/', '-', strtolower(strip_tags($string))), '-');

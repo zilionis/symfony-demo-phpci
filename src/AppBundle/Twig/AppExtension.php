@@ -28,6 +28,22 @@ class AppExtension extends \Twig_Extension
 {
     private $parser;
 
+    /**
+     * @return Markdown
+     */
+    public function getParser()
+    {
+        return $this->parser;
+    }
+
+    /**
+     * @param Markdown $parser
+     */
+    public function setParser($parser)
+    {
+        $this->parser = $parser;
+    }
+
     public function __construct(Markdown $parser)
     {
         $this->parser = $parser;

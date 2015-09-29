@@ -32,6 +32,9 @@ use AppBundle\Entity\Post;
  */
 class BlogControllerTest extends WebTestCase
 {
+    /**
+     *
+     */
     public function testRegularUsersCannotAccessToTheBackend()
     {
         $client = static::createClient(array(), array(
@@ -44,6 +47,9 @@ class BlogControllerTest extends WebTestCase
         $this->assertEquals(Response::HTTP_FORBIDDEN, $client->getResponse()->getStatusCode());
     }
 
+    /**
+     *
+     */
     public function testAdministratorUsersCanAccessToTheBackend()
     {
         $client = static::createClient(array(), array(
@@ -56,6 +62,9 @@ class BlogControllerTest extends WebTestCase
         $this->assertEquals(Response::HTTP_OK, $client->getResponse()->getStatusCode());
     }
 
+    /**
+     *
+     */
     public function testIndex()
     {
         $client = static::createClient(array(), array(

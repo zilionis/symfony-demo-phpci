@@ -65,6 +65,9 @@ class Comment
      */
     private $publishedAt;
 
+    /**
+     *
+     */
     public function __construct()
     {
         $this->publishedAt = new \DateTime();
@@ -80,42 +83,73 @@ class Comment
         return !$containsInvalidCharacters;
     }
 
+    /**
+     * @return mixed
+     */
     public function getId()
     {
         return $this->id;
     }
 
+    /**
+     * @return mixed
+     */
     public function getContent()
     {
         return $this->content;
     }
+
+    /**
+     * @param $content
+     */
     public function setContent($content)
     {
         $this->content = $content;
     }
 
+    /**
+     * @return mixed
+     */
     public function getAuthorEmail()
     {
         return $this->authorEmail;
     }
+
+    /**
+     * @param $authorEmail
+     */
     public function setAuthorEmail($authorEmail)
     {
         $this->authorEmail = $authorEmail;
     }
 
+    /**
+     * @return \DateTime
+     */
     public function getPublishedAt()
     {
         return $this->publishedAt;
     }
+
+    /**
+     * @param $publishedAt
+     */
     public function setPublishedAt($publishedAt)
     {
         $this->publishedAt = $publishedAt;
     }
 
+    /**
+     * @return mixed
+     */
     public function getPost()
     {
         return $this->post;
     }
+
+    /**
+     * @param Post|null $post
+     */
     public function setPost(Post $post = null)
     {
         $this->post = $post;

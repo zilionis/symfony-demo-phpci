@@ -117,6 +117,70 @@ HELP
     }
 
     /**
+     * @return boolean
+     */
+    public function isIgnoreValidationErrors()
+    {
+        return $this->ignoreValidationErrors;
+    }
+
+    /**
+     * @param boolean $ignoreValidationErrors
+     */
+    public function setIgnoreValidationErrors($ignoreValidationErrors)
+    {
+        $this->ignoreValidationErrors = $ignoreValidationErrors;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isApplicationDefinitionMerged()
+    {
+        return $this->applicationDefinitionMerged;
+    }
+
+    /**
+     * @param boolean $applicationDefinitionMerged
+     */
+    public function setApplicationDefinitionMerged($applicationDefinitionMerged)
+    {
+        $this->applicationDefinitionMerged = $applicationDefinitionMerged;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isApplicationDefinitionMergedWithArgs()
+    {
+        return $this->applicationDefinitionMergedWithArgs;
+    }
+
+    /**
+     * @param boolean $applicationDefinitionMergedWithArgs
+     */
+    public function setApplicationDefinitionMergedWithArgs($applicationDefinitionMergedWithArgs)
+    {
+        $this->applicationDefinitionMergedWithArgs = $applicationDefinitionMergedWithArgs;
+    }
+
+    /**
+     * @return ObjectManager
+     */
+    public function getEm()
+    {
+        return $this->em;
+    }
+
+    /**
+     * @param ObjectManager $em
+     */
+    public function setEm($em)
+    {
+        $this->em = $em;
+    }
+
+    /**
      * Sends the given $contents to the $recipient email address.
      *
      * @param string $contents

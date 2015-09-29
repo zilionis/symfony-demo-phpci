@@ -24,6 +24,10 @@ use AppBundle\Entity\Post;
  */
 class PostRepository extends EntityRepository
 {
+    /**
+     * @param int $limit
+     * @return array
+     */
     public function findLatest($limit = Post::NUM_ITEMS)
     {
         return $this

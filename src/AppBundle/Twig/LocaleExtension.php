@@ -22,13 +22,22 @@ use Symfony\Component\Intl\Intl;
  */
 class LocaleExtension extends \Twig_Extension
 {
+    /**
+     * @var
+     */
     private $locales;
 
+    /**
+     * @param $locales
+     */
     public function __construct($locales)
     {
         $this->locales = $locales;
     }
 
+    /**
+     * @return array
+     */
     public function getFunctions()
     {
         return array(
@@ -36,6 +45,9 @@ class LocaleExtension extends \Twig_Extension
         );
     }
 
+    /**
+     * @return array
+     */
     public function getLocales()
     {
         $localeCodes = explode('|', $this->locales);
@@ -51,6 +63,9 @@ class LocaleExtension extends \Twig_Extension
     }
 
     // the name of the Twig extension must be unique in the application
+    /**
+     * @return string
+     */
     public function getName()
     {
         return 'app.locale_extension';

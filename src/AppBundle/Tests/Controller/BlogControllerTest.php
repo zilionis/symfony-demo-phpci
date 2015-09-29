@@ -26,6 +26,9 @@ use AppBundle\Entity\Post;
  */
 class BlogControllerTest extends WebTestCase
 {
+    /**
+     *
+     */
     public function testIndex()
     {
         $client = static::createClient();

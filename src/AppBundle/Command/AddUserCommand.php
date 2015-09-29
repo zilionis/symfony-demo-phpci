@@ -37,6 +37,9 @@ use AppBundle\Entity\User;
  */
 class AddUserCommand extends ContainerAwareCommand
 {
+    /**
+     *
+     */
     const MAX_ATTEMPTS = 5;
 
     /**
@@ -44,6 +47,9 @@ class AddUserCommand extends ContainerAwareCommand
      */
     private $em;
 
+    /**
+     *
+     */
     protected function configure()
     {
         $this

@@ -28,6 +28,22 @@ class Markdown
         $this->parser = new \Parsedown();
     }
 
+    /**
+     * @return \Parsedown
+     */
+    public function getParser()
+    {
+        return $this->parser;
+    }
+
+    /**
+     * @param \Parsedown $parser
+     */
+    public function setParser($parser)
+    {
+        $this->parser = $parser;
+    }
+
     public function toHtml($text)
     {
         $html = $this->parser->text($text);

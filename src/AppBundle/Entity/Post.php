@@ -79,52 +79,82 @@ class Post
      */
     private $comments;
 
+    /**
+     *
+     */
     public function __construct()
     {
         $this->publishedAt = new \DateTime();
         $this->comments = new ArrayCollection();
     }
 
+    /**
+     * @return mixed
+     */
     public function getId()
     {
         return $this->id;
     }
 
+    /**
+     * @return mixed
+     */
     public function getTitle()
     {
         return $this->title;
     }
 
+    /**
+     * @param $title
+     */
     public function setTitle($title)
     {
         $this->title = $title;
     }
 
+    /**
+     * @return mixed
+     */
     public function getSlug()
     {
         return $this->slug;
     }
 
+    /**
+     * @param $slug
+     */
     public function setSlug($slug)
     {
         $this->slug = $slug;
     }
 
+    /**
+     * @return mixed
+     */
     public function getContent()
     {
         return $this->content;
     }
 
+    /**
+     * @param $content
+     */
     public function setContent($content)
     {
         $this->content = $content;
     }
 
+    /**
+     * @return mixed
+     */
     public function getAuthorEmail()
     {
         return $this->authorEmail;
     }
 
+    /**
+     * @param $authorEmail
+     */
     public function setAuthorEmail($authorEmail)
     {
         $this->authorEmail = $authorEmail;
@@ -142,38 +172,59 @@ class Post
         return $user->getEmail() == $this->getAuthorEmail();
     }
 
+    /**
+     * @return \DateTime
+     */
     public function getPublishedAt()
     {
         return $this->publishedAt;
     }
 
+    /**
+     * @param $publishedAt
+     */
     public function setPublishedAt($publishedAt)
     {
         $this->publishedAt = $publishedAt;
     }
 
+    /**
+     * @return ArrayCollection
+     */
     public function getComments()
     {
         return $this->comments;
     }
 
+    /**
+     * @param Comment $comment
+     */
     public function addComment(Comment $comment)
     {
         $this->comments->add($comment);
         $comment->setPost($this);
     }
 
+    /**
+     * @param Comment $comment
+     */
     public function removeComment(Comment $comment)
     {
         $this->comments->removeElement($comment);
         $comment->setPost(null);
     }
 
+    /**
+     * @return mixed
+     */
     public function getSummary()
     {
         return $this->summary;
     }
 
+    /**
+     * @param $summary
+     */
     public function setSummary($summary)
     {
         $this->summary = $summary;

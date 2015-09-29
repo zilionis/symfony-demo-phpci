@@ -65,6 +65,9 @@ class DefaultControllerTest extends WebTestCase
         );
     }
 
+    /**
+     * @return array
+     */
     public function getPublicUrls()
     {
         return array(
@@ -75,6 +78,9 @@ class DefaultControllerTest extends WebTestCase
         );
     }
 
+    /**
+     * @return array
+     */
     public function getSecureUrls()
     {
         return array(

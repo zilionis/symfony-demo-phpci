@@ -22,22 +22,44 @@ namespace AppBundle\Twig;
  */
 class SourceCodeExtension extends \Twig_Extension
 {
+    /**
+     * @var \Twig_LoaderInterface
+     */
     protected $loader;
+    /**
+     * @var
+     */
     protected $controller;
+    /**
+     * @var
+     */
     protected $template;
+    /**
+     * @var
+     */
     protected $kernelRootDir;
 
+    /**
+     * @param \Twig_LoaderInterface $loader
+     * @param $kernelRootDir
+     */
     public function __construct(\Twig_LoaderInterface $loader, $kernelRootDir)
     {
         $this->kernelRootDir = $kernelRootDir;
         $this->loader = $loader;
     }
 
+    /**
+     * @param $controller
+     */
     public function setController($controller)
     {
         $this->controller = $controller;
     }
 
+    /**
+     * @return array
+     */
     public function getFunctions()
     {
         return array(
@@ -50,6 +72,11 @@ class SourceCodeExtension extends \Twig_Extension
         );
     }
 
+    /**
+     * @param \Twig_Environment $twig
+     * @param $template
+     * @return string
+     */
     public function showSourceCode(\Twig_Environment $twig, $template)
     {
         $this->template = $template;
@@ -60,6 +87,9 @@ class SourceCodeExtension extends \Twig_Extension
         ));
     }
 
+    /**
+     * @return array|void
+     */
     private function getController()
     {
         // this happens for example for exceptions (404 errors, etc.)
@@ -86,6 +116,9 @@ class SourceCodeExtension extends \Twig_Extension
         );
     }
 
+    /**
+     * @return array
+     */
     private function getTemplate()
     {
         $templateName = $this->template->getTemplateName();
@@ -126,6 +159,9 @@ class SourceCodeExtension extends \Twig_Extension
     }
 
     // the name of the Twig extension must be unique in the application
+    /**
+     * @return string
+     */
     public function getName()
     {
         return 'app.source_code_extension';

@@ -36,6 +36,9 @@ class SluggerTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($slug, $result);
     }
 
+    /**
+     * @return array
+     */
     public function getSlugs()
     {
         return array(
