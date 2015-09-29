@@ -37,7 +37,7 @@ class SluggerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return array
+     * @return array1
      */
     public function getSlugs()
     {
