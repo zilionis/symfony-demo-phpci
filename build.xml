@@ -35,7 +35,7 @@
     <target name="tests" depends="phpunit,phpunit-report,coverage" />
 
     <target name="phpunit" description="PHPUnit">
-        <exec executable="phpunit" failonerror="true" osfamily="unix">
+        <exec executable="bin/phpunit" failonerror="true" osfamily="unix">
             <arg line="--configuration phpunit.xml" />
             <arg line="--log-junit ${build}/logs/phpunit.xml" />
             <arg line="--coverage-html ${build}/coverage/phpunit" />
@@ -64,7 +64,7 @@
     <target name="quality" description="Code quality" depends="phpmd,phpcpd,pdepend,phpcs,phploc,phpdcd,phpcb" />
 
     <target name="phpmd" description="PHP Mess Detector" >
-        <exec executable="phpmd" failonerror="false" osfamily="unix">
+        <exec executable="bin/phpmd" failonerror="false" osfamily="unix">
             <arg line="${basedir}" />
             <arg line="xml" />
             <arg line="naming,unusedcode,codesize" />
@@ -75,7 +75,7 @@
     </target>
 
     <target name="phpcpd" description="Copy/Paste Detector" >
-        <property name="phpcpd" value="${build}/logs/phpcpd.xml" />
+        <property name="bin/phpcpd" value="${build}/logs/phpcpd.xml" />
         <exec executable="phpcpd" failonerror="false" osfamily="unix">
             <arg line="--log-pmd ${phpcpd}" />
             <arg line="--exclude vendor/" />
@@ -91,7 +91,7 @@
         <!--
         @todo Use configuration=<file> argument.
         -->
-        <exec executable="pdepend" failonerror="false" osfamily="unix">
+        <exec executable="bin/pdepend" failonerror="false" osfamily="unix">
             <arg line="--jdepend-chart=${build}/logs/pdepend/pdepend.jdepend.chart.png" />
             <arg line="--jdepend-xml=${build}/logs/pdepend/pdepend.jdepend.xml"></arg>
             <arg line="--overview-pyramid=${build}/logs/pdepend/pdepend.overview.pyramid.png"></arg>
@@ -108,7 +108,7 @@
     </target>
 
     <target name="phpcs" description="PHP_CodeSniffer" >
-        <property name="phpcs" value="${build}/logs/phpcs.xml" />
+        <property name="bin/phpcs" value="${build}/logs/phpcs.xml" />
         <exec executable="phpcs" failonerror="false" osfamily="unix">
             <arg line="--tab-width=4" />
             <arg line="--report=checkstyle" />
@@ -121,7 +121,7 @@
     </target>
 
     <target name="phploc" description="Tool for quickly measuring the size of a PHP project" >
-        <exec executable="phploc" failonerror="false" osfamily="unix">
+        <exec executable="bin/phploc" failonerror="false" osfamily="unix">
             <arg line="--count-tests" />
             <arg line="--log-xml ${build}/logs/phploc.xml" />
             <arg line="--exclude vendor/" />
@@ -133,7 +133,7 @@
     </target>
 
     <target name="phpdcd" description="PHP Dead Code Detector" >
-        <exec executable="phpdcd" failonerror="false" osfamily="unix">
+        <exec executable="bin/phpdcd" failonerror="false" osfamily="unix">
             <arg line="--recursive" />
             <arg line="--exclude vendor/" />
             <arg line="--exclude .tmp/" />
@@ -144,7 +144,7 @@
     </target>
 
     <target name="phpcb" description="PHP_CodeBrowser" >
-        <exec executable="phpcb" failonerror="false" osfamily="unix">
+        <exec executable="bin/phpcb" failonerror="false" osfamily="unix">
             <arg line="--log ${build}/logs" />
             <arg line="--source ${basedir}" />
             <arg line="--output ${build}/coverage/phpcb" />
