@@ -82,7 +82,7 @@
             <arg line="--exclude app/cache/" />
             <arg line="--exclude .tmp/" />
             <arg line="--exclude Tests/app/bundles/" />
-            <arg line="${basedir}/app" />
+            <arg line="${basedir}/src" />
         </exec>
         <echo message="##teamcity[importData type='pmdCpd' path='${phpcpd}']"/>
         <echo message="##teamcity[publishArtifacts '${phpcpd}']" />
