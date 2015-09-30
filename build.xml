@@ -63,8 +63,4 @@
         <echo message="##teamcity[publishArtifacts '${build}/logs/coverage.zip']" />
     </target>
 
-
-    <target name="quality" description="Code quality" depends="phpmd,phpcpd,pdepend,phpcs,phploc,phpdcd,phpcb" />
-
-
 </project>
