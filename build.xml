@@ -1,43 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="Application" default="build">
-    <target name="build" depends="composer,phpunit,phpunit-xsl,phpunit-report,phpmd"/>
+<project name="Application" default="build" basedir="./">
+    <target name="build" depends="prepare"/>
 
-    <target name="composer" description="Install dependencies with Composer">
-        <get src="https://getcomposer.org/composer.phar" dest="${basedir}/composer.phar" skipexisting="true"/>
-        <exec executable="php">
-            <arg value="composer.phar"/>
-            <arg value="install"/>
-        </exec>
+    <property name="build" value="${basedir}/.build" />
+    <available file="${basedir}/phpunit_to_junit.xsl" property="phpunit_to_junit" />
+
+
+    <target name="prepare">
+        <delete dir="${build}" />
+
+        <mkdir dir="${build}" />
+        <mkdir dir="${build}/doc" />
+        <mkdir dir="${build}/logs" />
+        <mkdir dir="${build}/logs/pdepend" />
+        <mkdir dir="${build}/coverage" />
     </target>
-
-    <!-- Kick off phpunit -->
-    <target name="phpunit">
-        <exec dir="${basedir}" executable="phpunit" failonerror="true" description="Run unit app with PHPUnit 3.6.4">
-            <arg line="--configuration phpunit.xml" />
-            <arg line="--verbose" />
-        </exec>
-        <zip destfile="app/report/coverage.zip" basedir="app/report/coverage" />
-        <echo>##teamcity[publishArtifacts 'app/report/coverage.zip']</echo>
-    </target>
-
-    <target name="phpunit-xsl" description="Get phpunit to junit xsl">
-        <get src="https://raw.github.com/qyi/cookbooks/master/teamcity/files/default/phpunit_to_junit.xsl" dest="${basedir}/phpunit_to_junit.xsl" skipexisting="true"/>
-    </target>
-
-    <target name="phpunit-report" description="Convert phpunit.xml to junit.xml">
-        <xslt in="app/reports/test-results.xml" out="app/reports/junit.xml" style="${basedir}/phpunit_to_junit.xsl"/>
-        <echo message="##teamcity[importData type='junit' path='app/reports/junit.xml']" />
-    </target>
-
-    <target name="phpmd" description="PHP Mess Detector" >
-        <exec executable="phpmd" failonerror="false" osfamily="unix">
-            <arg line="${basedir}/src" />
-            <arg line="xml" />
-            <arg line="naming,unusedcode,codesize" />
-            <arg line="--reportfile app/reports/phpmd.xml" />
-            <arg line="--exclude vendor/,Entity/,.tmp/,Tests/app/bundles/" /> <!-- Entity because traits bug -->
-        </exec>
-        <echo message="##teamcity[importData type='pmd' path='app/reports/phpmd.xml']"/>
-    </target>
-
 </project>
