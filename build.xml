@@ -31,4 +31,40 @@
             <arg line="--env=test" />
         </exec>
     </target>
+
+    <target name="tests " depends="phpunit,phpunit-report" />
+
+    <target name="phpunit" description="PHPUnit">
+        <exec executable="phpunit" failonerror="true" osfamily="unix">
+            <arg line="--configuration phpunit.xml" />
+            <arg line="--log-junit ${build}/logs/phpunit.xml" />
+            <arg line="--coverage-html ${build}/coverage/phpunit" />
+            <arg line="--verbose" />
+            <arg line="--debug" />
+        </exec>
+        <available file="${build}/logs/phpunit.xml" property="phpunit.xml" />
+        <available file="${build}/coverage/phpunit" type="dir" property="phpunit.coverage" />
+    </target>
+
+    <target name="phpunit-xsl" description="Get phpunit to junit xsl" unless="phpunit_to_junit">
+        <exec executable="wget">
+            <arg line="https://gist.githubusercontent.com/zilionis/6bf8ea069ee86ec0b192/raw/3e1937246330a690693f1ef5776da0cde794e6a9/phpunit_to_junit.xsl" />
+        </exec>
+    </target>
+
+    <target name="phpunit-report" description="Convert phpunit.xml to junit.xml" depends="phpunit-xsl" if="phpunit.xml">
+        <xslt in="${build}/logs/phpunit.xml" out="${build}/logs/junit.xml" style="${basedir}/phpunit_to_junit.xsl"/>
+        <echo message="##teamcity[importData type='junit' path='${build}/logs/junit.xml']" />
+    </target>
+
+    <target name="coverage" description="Import code coverage" if="phpunit.coverage" >
+        <zip destfile="${build}/logs/coverage.zip" basedir="${build}/coverage/phpunit"/>
+        <delete dir="${build}/coverage/phpunit"/>
+        <echo message="##teamcity[publishArtifacts '${build}/logs/coverage.zip']" />
+    </target>
+
+
+    <target name="quality" description="Code quality" depends="phpmd,phpcpd,pdepend,phpcs,phploc,phpdcd,phpcb" />
+
+
 </project>
