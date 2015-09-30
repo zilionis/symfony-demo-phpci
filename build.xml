@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="Application" default="build" basedir="./">
-    <target name="build" depends="prepare,composer,bootstrap"/>
+    <target name="build" depends="prepare,composer,bootstrap,tests"/>
 
     <property name="build" value="${basedir}/.build" />
     <available file="${basedir}/phpunit_to_junit.xsl" property="phpunit_to_junit" />
