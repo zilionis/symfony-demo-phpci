@@ -39,8 +39,6 @@
             <arg line="--configuration phpunit.xml" />
             <arg line="--log-junit ${build}/logs/phpunit.xml" />
             <arg line="--coverage-html ${build}/coverage/phpunit" />
-            <arg line="--verbose" />
-            <arg line="--debug" />
         </exec>
         <available file="${build}/logs/phpunit.xml" property="phpunit.xml" />
         <available file="${build}/coverage/phpunit" type="dir" property="phpunit.coverage" />
