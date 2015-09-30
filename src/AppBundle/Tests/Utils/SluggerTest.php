@@ -41,6 +41,11 @@ class SluggerTest extends \PHPUnit_Framework_TestCase
         self::assertEquals(1, 1);
     }
 
+    public function testFake4()
+    {
+        self::assertEquals(1, 1);
+    }
+
     public function testFake2()
     {
         self::assertEquals(1, 1);
