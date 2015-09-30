@@ -32,7 +32,7 @@
         </exec>
     </target>
 
-    <target name="tests " depends="phpunit,phpunit-report" />
+    <target name="tests" depends="phpunit,phpunit-report" />
 
     <target name="phpunit" description="PHPUnit">
         <exec executable="phpunit" failonerror="true" osfamily="unix">
