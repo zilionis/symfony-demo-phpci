@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="Application" default="build" basedir="./">
-    <target name="build" depends="prepare"/>
+    <target name="build" depends="prepare,bootstrap"/>
 
     <property name="build" value="${basedir}/.build" />
     <available file="${basedir}/phpunit_to_junit.xsl" property="phpunit_to_junit" />
@@ -14,5 +14,13 @@
         <mkdir dir="${build}/logs" />
         <mkdir dir="${build}/logs/pdepend" />
         <mkdir dir="${build}/coverage" />
+    </target>
+
+    <target name="bootstrap">
+        <exec executable="php" failonerror="true" osfamily="unix">
+            <arg line="app/console" />
+            <arg line="cache:clear" />
+            <arg line="--env=test" />
+        </exec>
     </target>
 </project>
