@@ -108,8 +108,8 @@
     </target>
 
     <target name="phpcs" description="PHP_CodeSniffer" >
-        <property name="bin/phpcs" value="${build}/logs/phpcs.xml" />
-        <exec executable="phpcs" failonerror="false" osfamily="unix">
+        <property name="phpcs" value="${build}/logs/phpcs.xml" />
+        <exec executable="bin/phpcs" failonerror="false" osfamily="unix">
             <arg line="--tab-width=4" />
             <arg line="--report=checkstyle" />
             <arg line="--report-file=${phpcs}" />
