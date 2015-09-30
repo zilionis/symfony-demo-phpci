@@ -28,7 +28,8 @@
         "sebastian/phpcpd": "*"
     },
     "require-dev": {
-        "sensio/generator-bundle": "~2.3"
+        "sensio/generator-bundle": "~2.3",
+        "phpmd/phpmd": "^2.3"
     },
     "scripts": {
         "post-install-cmd": [
