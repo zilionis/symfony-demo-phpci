@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="Application" default="build" basedir="./">
-    <target name="build" depends="prepare,bootstrap"/>
+    <target name="build" depends="prepare,composer,bootstrap"/>
 
     <property name="build" value="${basedir}/.build" />
     <available file="${basedir}/phpunit_to_junit.xsl" property="phpunit_to_junit" />
 
 
-    <target name="prepare">
+    <target name="prepare" description="Prepare some dirs">
         <delete dir="${build}" />
 
         <mkdir dir="${build}" />
@@ -16,7 +16,15 @@
         <mkdir dir="${build}/coverage" />
     </target>
 
-    <target name="bootstrap">
+    <target name="composer" description="Install dependencies with Composer">
+        <get src="https://getcomposer.org/composer.phar" dest="${basedir}/composer.phar" skipexisting="true"/>
+        <exec executable="php">
+            <arg value="composer.phar"/>
+            <arg value="install"/>
+        </exec>
+    </target>
+
+    <target name="bootstrap" description="Bootstrap application">
         <exec executable="php" failonerror="true" osfamily="unix">
             <arg line="app/console" />
             <arg line="cache:clear" />
