@@ -75,8 +75,8 @@
     </target>
 
     <target name="phpcpd" description="Copy/Paste Detector" >
-        <property name="bin/phpcpd" value="${build}/logs/phpcpd.xml" />
-        <exec executable="phpcpd" failonerror="false" osfamily="unix">
+        <property name="phpcpd" value="${build}/logs/phpcpd.xml" />
+        <exec executable="bin/phpcpd" failonerror="false" osfamily="unix">
             <arg line="--log-pmd ${phpcpd}" />
             <arg line="--exclude vendor/" />
             <arg line="--exclude .tmp/" />
