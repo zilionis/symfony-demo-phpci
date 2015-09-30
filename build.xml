@@ -69,7 +69,7 @@
             <arg line="xml" />
             <arg line="naming,unusedcode,codesize" />
             <arg line="--reportfile ${build}/phpmd.xml" />
-            <arg line="--exclude vendor/,Entity/,.tmp/,Tests/app/bundles/" /> <!-- Entity because traits bug -->
+            <arg line="--exclude vendor/,app/cache/,.tmp/,Tests/app/bundles/" /> <!-- Entity because traits bug -->
         </exec>
         <echo message="##teamcity[importData type='pmd' path='${build}/phpmd.xml']"/>
     </target>
@@ -79,6 +79,7 @@
         <exec executable="bin/phpcpd" failonerror="false" osfamily="unix">
             <arg line="--log-pmd ${phpcpd}" />
             <arg line="--exclude vendor/" />
+            <arg line="--exclude app/cache/" />
             <arg line="--exclude .tmp/" />
             <arg line="--exclude Tests/app/bundles/" />
             <arg line="${basedir}" />
@@ -97,7 +98,7 @@
             <arg line="--overview-pyramid=${build}/logs/pdepend/pdepend.overview.pyramid.png"></arg>
             <arg line="--summary-xml=${build}/logs/pdepend/pdepend.summary.xml"></arg>
             <arg line="--coderank-mode=inheritance,property,method"></arg>
-            <arg line="--ignore=vendor/,Entity/,.tmp/,Tests/app/bundles/" /> <!-- Entity because traits bug -->
+            <arg line="--ignore=vendor/,app/cache,.tmp/,Tests/app/bundles/" /> <!-- Entity because traits bug -->
             <arg line="${basedir}"></arg>
         </exec>
         <echo message="##teamcity[publishArtifacts '${build}/logs/pdepend/pdepend.jdepend.chart.png']" />
@@ -114,7 +115,7 @@
             <arg line="--report=checkstyle" />
             <arg line="--report-file=${phpcs}" />
             <arg line="--standard=Symfony2" />
-            <arg line="--ignore=vendor/,.tmp/,Tests/app/bundles/" />
+            <arg line="--ignore=vendor/,.tmp/,app/cache/,Tests/app/bundles/" />
             <arg line="${basedir}" />
         </exec>
         <echo message="##teamcity[importData type='checkstyle' path='${phpcs}']"/>
@@ -125,6 +126,7 @@
             <arg line="--count-tests" />
             <arg line="--log-xml ${build}/logs/phploc.xml" />
             <arg line="--exclude vendor/" />
+            <arg line="--exclude app/cache/" />
             <arg line="--exclude .tmp/" />
             <arg line="--exclude Tests/app/bundles/" />
             <arg line="${basedir}" />
@@ -136,6 +138,7 @@
         <exec executable="bin/phpdcd" failonerror="false" osfamily="unix">
             <arg line="--recursive" />
             <arg line="--exclude vendor/" />
+            <arg line="--exclude app/cache/" />
             <arg line="--exclude .tmp/" />
             <arg line="--exclude Tests/app/bundles/" />
             <arg line="${basedir}" />
@@ -151,6 +154,7 @@
             <arg line="--exclude ${basedir}/vendor*" />
             <arg line="--exclude ${basedir}/Resources*" />
             <arg line="--exclude ${basedir}/Tests/app/bundles" />
+            <arg line="--exclude ${basedir}/app/cache" />
             <arg line="--exclude ${basedir}/.tmp*" />
             <arg line="--debugExcludes" />
         </exec>
