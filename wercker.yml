@@ -1,4 +1,4 @@
-box: wercker/php
+box: stuvia/wercker-php
 build:
   steps:
     - script:
