@@ -1,11 +1,10 @@
-box: debian
+box: wercker/php
 build:
   steps:
-    - bundle-install
     - script:
-        name: Docker Build & Export
-        code: |
-          cd $WERCKER_SOURCE_DIR
-          sudo docker build -t test/symfony2 .
-          DOCKER_IMAGE_ID=$(sudo docker run -d test/symfony2)
-          sudo docker export $DOCKER_IMAGE_ID > $WERCKER_OUTPUT_DIR/container.tar
+      name: install dependencies
+      code: |-
+          composer install --no-interaction
+    - script:
+        name: PHPUnit integration tests
+        code: phpunit --configuration phpunit.xml
