@@ -105,4 +105,9 @@ class DefaultControllerTest extends WebTestCase
     {
         self::assertEquals(1,1);
     }
+
+    public function test4Lol()
+    {
+        self::assertEquals(1,1);
+    }
 }
