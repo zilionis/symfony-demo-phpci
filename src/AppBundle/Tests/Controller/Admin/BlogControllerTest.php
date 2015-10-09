@@ -85,6 +85,10 @@ class BlogControllerTest extends WebTestCase
     {
         self::assertEquals(1,1);
     }
+
+    /**
+     * lolo
+     */
     public function test2Lol()
     {
         self::assertEquals(1,1);
