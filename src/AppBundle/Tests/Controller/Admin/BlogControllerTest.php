@@ -35,7 +35,7 @@ class BlogControllerTest extends WebTestCase
     /**
      *
      */
-    public function disabledTestRegularUsersCannotAccessToTheBackend()
+    public function testRegularUsersCannotAccessToTheBackend()
     {
         $client = static::createClient(array(), array(
             'PHP_AUTH_USER' => 'john_user',
@@ -50,7 +50,7 @@ class BlogControllerTest extends WebTestCase
     /**
      *
      */
-    public function disabledTestAdministratorUsersCanAccessToTheBackend()
+    public function testAdministratorUsersCanAccessToTheBackend()
     {
         $client = static::createClient(array(), array(
                 'PHP_AUTH_USER' => 'anna_admin',
@@ -65,7 +65,7 @@ class BlogControllerTest extends WebTestCase
     /**
      *
      */
-    public function disabledTtestIndex()
+    public function testIndex()
     {
         $client = static::createClient(array(), array(
             'PHP_AUTH_USER' => 'anna_admin',

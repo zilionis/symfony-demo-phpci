@@ -29,7 +29,7 @@ class BlogControllerTest extends WebTestCase
     /**
      *
      */
-    public function disabledTestIndex()
+    public function testIndex()
     {
         $client = static::createClient();
         $crawler = $client->request('GET', '/en/blog/');
