@@ -57,7 +57,7 @@ class SluggerTest extends \PHPUnit_Framework_TestCase
     public function getSlugs()
     {
         return array(
-            array('Lorem Ipsum'     , 'lorem-ipsum'),
+            array('Lorem Ipsum11'     , 'lorem-ipsum'),
             array('  Lorem Ipsum  ' , 'lorem-ipsum'),
             array(' lOrEm  iPsUm  ' , 'lorem-ipsum'),
             array('!Lorem Ipsum!'   , 'lorem-ipsum'),
